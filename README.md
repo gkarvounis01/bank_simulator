@@ -2,7 +2,7 @@
 
 ## Description
 
-Bank simulator is a console app written in C# that simulates a banking system. You can login to your account, withdrawal, deposit and check you balance.
+Bank simulator is a console app written in C# that simulates a banking system. You can login to your account, withdrawal, deposit and check your balance.
 
 ## Usage
 - Make sure you have the latest Visual Studio version installed to your computer [Visual Studio download](https://visualstudio.microsoft.com/downloads/).
