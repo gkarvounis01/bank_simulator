@@ -1,12 +1,10 @@
-﻿using Intuit.Ipp.Data;
-using Intuit.Ipp.Exception;
-using System;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
-using System.Xml.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
 
-namespace Trapeza
+namespace Bank
 {
     internal class Money
     {
@@ -19,9 +17,9 @@ namespace Trapeza
             List<Account> AccountList = new List<Account>();
 
             //Add to list
-            AccountList.Add(new Account("Georgios Karvounis", 123456789, 0123, 5000.0));
-            AccountList.Add(new Account("Konstantinta Betchava", 987654321, 6666, 20.0));
-            AccountList.Add(new Account("Dimitris Oupas", 111111111, 1111, 100.0));
+            AccountList.Add(new Account("Jack Reach", 123456789, 0123, 5000.0));
+            AccountList.Add(new Account("Janet Bet", 987654321, 6666, 20.0));
+            AccountList.Add(new Account("Carol Ober", 111111111, 1111, 100.0));
             AccountList.Add(new Account("Jane doe", 555566666, 5566, 555.0));
             AccountList.Add(new Account("John Doe", 222222222, 2222, 222222));
 
@@ -41,10 +39,10 @@ namespace Trapeza
                 do
                 {
                     //Main menu
-                    Console.Write("1.Ανάληψη\n" +
-                                    "2.Κατάθεση\n" +
-                                    "3.Eρώτηση Υπολοίπου\n" +
-                                    "4.Έξοδος\n");
+                    Console.Write("1.Withdrawal\n" +
+                                  "2.Deposit\n" +
+                                  "3.Balance\n" +
+                                  "4.Exit\n");
 
                     choice = Convert.ToInt32(Console.ReadLine());
                     Console.Clear();
@@ -59,17 +57,17 @@ namespace Trapeza
                 while (flag == false)
                 {
                     //Login
-                    Console.Write("Εισάγετε το ΑΦΜ: ");
-                    int afm = Convert.ToInt32(Console.ReadLine());
-                    login_account.SetAfm(afm);
+                    Console.Write("Enter your Taxpayer Identification Number: ");
+                    int tin = Convert.ToInt32(Console.ReadLine());
+                    login_account.SetTin(tin);
 
-                    Console.Write("Εισάγετε το Pin: ");
+                    Console.Write("Enter your Pin: ");
                     int pin = Convert.ToInt32(Console.ReadLine());
                     login_account.SetPin(pin);
 
                     for (int i = 0; i < AccountList.Count; i++)
                     {
-                        if (login_account.GetAfm() == AccountList[i].GetAfm() && login_account.GetPin() == AccountList[i].GetPin())
+                        if (login_account.GetTin() == AccountList[i].GetTin() && login_account.GetPin() == AccountList[i].GetPin())
                         {
                             flag = true;
                             num = i;
@@ -80,7 +78,7 @@ namespace Trapeza
                     if (flag == false)
                     {
                         Console.Clear();
-                        Console.WriteLine("Λάθος ΑΦΜ ή Pin!");
+                        Console.WriteLine("Wrong Taxpayer Identification Number or PIN!");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -88,7 +86,7 @@ namespace Trapeza
                     else
                     {
                         Console.Clear();
-                        Console.WriteLine("Επιτυχής σύνδεση!");
+                        Console.WriteLine("Successful login!");
                     }
                 }
 
@@ -96,14 +94,14 @@ namespace Trapeza
                 {
                     case 1:
                         Console.Clear();
-                        Console.Write("Εισάγετε το ποσό για ανάληψη: ");
+                        Console.Write("Enter amount for withdrawal: ");
                         double temp_withdrawl = Convert.ToDouble(Console.ReadLine());
                         AccountList[num].withdraw(temp_withdrawl);
                         break;
 
                     case 2:
                         Console.Clear();
-                        Console.Write("Εισάγετε το ποσό για κατάθεση: ");
+                        Console.Write("Enter amount for deposit: ");
                         double temp_deposit = Convert.ToDouble(Console.ReadLine());
                         AccountList[num].deposit(temp_deposit);
                         break;
@@ -113,10 +111,11 @@ namespace Trapeza
                         break;
 
                     case 4:
-                        Console.WriteLine("Έξοδος απο το σύστημα... Παρακαλώ περιμένετε");
+                        Console.WriteLine("Logging out... Please wait");
                         Thread.Sleep(milliseconds);
                         Console.Clear();
-                        Console.WriteLine("Η έξοδος πραγματοποιήθηκε με επιτυχία.");
+                        Console.WriteLine("Exiting...");
+                        Thread.Sleep(milliseconds);
                         break;
                 }
             }while (choice < 4  && choice > 0);

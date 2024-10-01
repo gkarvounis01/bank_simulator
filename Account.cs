@@ -1,17 +1,15 @@
-﻿using Intuit.Ipp.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Threading;
 
-namespace Trapeza
+namespace Bank
 {
     internal class Account
     {
         private string owner;
-        private int afm;
+        private int tin;
         private int pin;
         private double balance;
 
@@ -25,7 +23,7 @@ namespace Trapeza
         public Account(string o, int a, int p, double b)
         {
             owner = o;
-            afm = a;
+            tin = a;
             pin = p;
             balance = b; 
         }
@@ -34,9 +32,9 @@ namespace Trapeza
         {
             return owner;
         }
-        public int GetAfm()
+        public int GetTin()
         {
-            return afm;
+            return tin;
         }
         public int GetPin()
         {
@@ -51,9 +49,9 @@ namespace Trapeza
         {
             owner = o;
         }
-        public void SetAfm(int a)
+        public void SetTin(int a)
         {
-            afm = a;
+            tin = a;
         }
         public void SetPin(int p)
         {
@@ -71,7 +69,7 @@ namespace Trapeza
 
             Console.Clear();
 
-            Console.WriteLine("Νέο υπόλοιπο: " + balance);
+            Console.WriteLine("New balance: " + balance);
 
             Console.WriteLine();
         }
@@ -83,7 +81,7 @@ namespace Trapeza
             {
                 Console.Clear();
 
-                Console.WriteLine("Προσοχή! Μη επαρκές υπόλοιπο για ανάληψη.");
+                Console.WriteLine("Error! Not enough funds for withdrawal.");
 
                 Console.WriteLine();
             }
@@ -94,7 +92,7 @@ namespace Trapeza
 
                 Console.Clear();
 
-                Console.WriteLine("Νέο υπόλοιπο: " + balance);
+                Console.WriteLine("New balance: " + balance);
 
                 Console.WriteLine();
             }
@@ -103,9 +101,9 @@ namespace Trapeza
 
         public void print()
         {
-            Console.WriteLine("Ονοματεπώνυμο: " + GetOwner());
-            Console.WriteLine("Υπόλοιπο: " + GetBalance());
-            //Console.WriteLine(GetAfm());
+            Console.WriteLine("Customer: " + GetOwner());
+            Console.WriteLine("Balance: " + GetBalance());
+            //Console.WriteLine(GetTin());
             //Console.WriteLine(GetPin());
 
             Console.ReadLine();

@@ -1,0 +1,7 @@
+C:\Users\gkarv\source\repos\bank_simulator\obj\x86\Debug\bank_simulator.csproj.AssemblyReference.cache
+C:\Users\gkarv\source\repos\bank_simulator\obj\x86\Debug\bank_simulator.csproj.CoreCompileInputs.cache
+C:\Users\gkarv\source\repos\bank_simulator\bin\Debug\ConsoleApplication.exe.config
+C:\Users\gkarv\source\repos\bank_simulator\bin\Debug\ConsoleApplication.exe
+C:\Users\gkarv\source\repos\bank_simulator\bin\Debug\ConsoleApplication.pdb
+C:\Users\gkarv\source\repos\bank_simulator\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\gkarv\source\repos\bank_simulator\obj\x86\Debug\ConsoleApplication.pdb
